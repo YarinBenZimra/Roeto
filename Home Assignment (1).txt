@@ -1,6 +1,0 @@
-Roeto API Credentials
-============================
-Key Name: Home Assignment
-Client ID: 66c0ef52-59b5-42e4-a72c-f5f2c1e7a43c
-Client Secret: g5UHIOVixEQLZAmzKLN1whBFMbZoVF2c
-IMPORTANT: Keep these credentials secure and do not share them.
