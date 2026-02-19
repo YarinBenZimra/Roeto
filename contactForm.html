@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ירין בנזימרה - סוכן ביטוח | טופס פנייה</title>
+    <style>
+      :root {
+        --bg1: #0b1220;
+        --bg2: #0f1a33;
+        --card: #0f172a;
+        --card2: #101c34;
+        --text: #e6eefc;
+        --muted: #9fb0d0;
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: #5eead4;
+        --accent2: #60a5fa;
+        --danger: #ef4444;
+        --ok: #22c55e;
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        --radius: 18px;
+        --radius2: 26px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Arial,
+          "Noto Sans Hebrew",
+          "Heebo",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            1100px 700px at 20% 10%,
+            rgba(96, 165, 250, 0.25),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 650px at 85% 25%,
+            rgba(94, 234, 212, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg1), var(--bg2));
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .shell {
+        width: min(1080px, 100%);
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+      }
+
+      @media (max-width: 980px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--line);
+        border-radius: var(--radius2);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .panel::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background:
+          radial-gradient(
+            700px 350px at 40% -5%,
+            rgba(96, 165, 250, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            650px 320px at 80% 0%,
+            rgba(94, 234, 212, 0.14),
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+
+      .left {
+        padding: 28px 26px;
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.72),
+          rgba(15, 23, 42, 0.62)
+        );
+      }
+
+      .right {
+        position: relative;
+        padding: 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(16, 28, 52, 0.78),
+          rgba(16, 28, 52, 0.62)
+        );
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background:
+          radial-gradient(
+            28px 18px at 30% 25%,
+            rgba(94, 234, 212, 0.55),
+            transparent 60%
+          ),
+          radial-gradient(
+            32px 22px at 70% 60%,
+            rgba(96, 165, 250, 0.55),
+            transparent 62%
+          ),
+          rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: rgba(230, 238, 252, 0.95);
+        user-select: none;
+        overflow: hidden;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+
+      .brand p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hero {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .avatar {
+        width: 92px;
+        height: 92px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        flex: 0 0 auto;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero h2 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .hero .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .hint {
+        margin-top: 16px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(230, 238, 252, 0.92);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      form {
+        position: relative;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      label {
+        font-size: 12px;
+        color: rgba(230, 238, 252, 0.92);
+      }
+      label .req {
+        color: var(--accent);
+        font-weight: 700;
+        margin-right: 6px;
+      }
+
+      input,
+      select,
+      textarea {
+        appearance: none;
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(15, 23, 42, 0.55);
+        color: var(--text);
+        outline: none;
+        transition:
+          border-color 0.18s ease,
+          box-shadow 0.18s ease,
+          transform 0.06s ease;
+        font-size: 14px;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(159, 176, 208, 0.78);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(94, 234, 212, 0.55);
+        box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.14);
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .error {
+        min-height: 16px;
+        font-size: 12px;
+        color: #ef4444;
+        display: none;
+      }
+
+      .field.invalid input,
+      .field.invalid select,
+      .field.invalid textarea {
+        border-color: rgba(239, 68, 68, 0.65);
+        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+      }
+
+      .field.invalid .error {
+        display: block;
+      }
+
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border: 0;
+        cursor: pointer;
+        border-radius: 16px;
+        padding: 12px 16px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        color: #07121f;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        box-shadow: 0 14px 35px rgba(96, 165, 250, 0.18);
+        transition:
+          transform 0.08s ease,
+          filter 0.15s ease,
+          opacity 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-width: 160px;
+        user-select: none;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        filter: saturate(0.8);
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+        flex: 1 1 auto;
+      }
+
+      .status {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        display: none;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .status.ok {
+        display: block;
+        border-color: rgba(34, 197, 94, 0.28);
+        background: rgba(34, 197, 94, 0.08);
+        color: rgba(230, 238, 252, 0.95);
+      }
+      .status.bad {
+        display: block;
+        border-color: rgba(239, 68, 68, 0.28);
+        background: rgba(239, 68, 68, 0.08);
+        color: rgba(230, 238, 252, 0.95);
+      }
+
+      .row-wide {
+        grid-column: 1 / -1;
+      }
+
+      .filebox {
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(15, 23, 42, 0.45);
+      }
+      input[type="file"] {
+        padding: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 12px 0 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="shell">
+      <section class="panel left" aria-label="פרטי הסוכן">
+        <div class="brand">
+          <div class="logo" title="לוגו" aria-label="לוגו">
+            <img id="logoPreview" alt="לוגו" style="display: none" />
+            <span id="logoFallback">YB</span>
+          </div>
+          <div>
+            <h1>ירין בנזימרה</h1>
+            <p>סוכן ביטוח • טופס הגשת פרטים</p>
+          </div>
+        </div>
+
+        <div class="hero">
+          <div class="avatar" aria-label="תמונת פרופיל">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQEkUohqIAzVew/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721850585890?e=1773273600&v=beta&t=5EccdSlbQl8DUpliRetdE_-pELHWBrc-6hTCIIaQ6jM"
+              alt="ירין בנזימרה"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+          <div>
+            <h2>בוא נתקדם מהר ויעיל</h2>
+            <p class="sub">
+              מלא/י את הפרטים ואחזור אליך בהקדם. שדות חובה מסומנים.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel right" aria-label="טופס">
+        <form id="leadForm" novalidate action="#">
+          <div class="grid">
+            <div class="field">
+              <label for="firstName"><span class="req">*</span>שם פרטי</label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                placeholder="לדוגמה: ירין"
+                autocomplete="given-name"
+              />
+              <div class="error" data-for="firstName"></div>
+            </div>
+
+            <div class="field">
+              <label for="lastName"><span class="req">*</span>שם משפחה</label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                placeholder="לדוגמה: בנזימרה"
+                autocomplete="family-name"
+              />
+              <div class="error" data-for="lastName"></div>
+            </div>
+
+            <div class="field row-wide">
+              <label for="email"><span class="req">*</span>אימייל</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="name@example.com"
+                autocomplete="email"
+                inputmode="email"
+              />
+              <div class="error" data-for="email"></div>
+            </div>
+
+            <div class="divider row-wide" role="presentation"></div>
+
+            <div class="field">
+              <label for="phone">טלפון (10 ספרות, מתחיל ב-0)</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="0501234567"
+                inputmode="numeric"
+              />
+              <div class="error" data-for="phone"></div>
+            </div>
+
+            <div class="field">
+              <label for="idNumber">תעודת זהות (9 ספרות)</label>
+              <input
+                id="idNumber"
+                name="idNumber"
+                type="text"
+                placeholder="123456789"
+                inputmode="numeric"
+              />
+              <div class="error" data-for="idNumber"></div>
+            </div>
+
+            <div class="field">
+              <label for="gender">מין</label>
+              <select id="gender" name="gender">
+                <option value="">בחר/י</option>
+                <option value="זכר">זכר</option>
+                <option value="נקבה">נקבה</option>
+                <option value="אחר">אחר</option>
+              </select>
+              <div class="error" data-for="gender"></div>
+            </div>
+
+            <div class="field">
+              <label for="birthday">תאריך יום הולדת</label>
+              <input id="birthday" name="birthday" type="date" />
+              <div class="error" data-for="birthday"></div>
+            </div>
+
+            <div class="field">
+              <label for="idIssueDate">תאריך הנפקת תעודת זהות</label>
+              <input id="idIssueDate" name="idIssueDate" type="date" />
+              <div class="error" data-for="idIssueDate"></div>
+            </div>
+
+            <div class="field row-wide">
+              <label for="reason">מדוע אתה פונה אלינו?</label>
+              <textarea
+                id="reason"
+                name="reason"
+                placeholder="תאר/י בקצרה במה אפשר לעזור..."
+              ></textarea>
+              <div class="error" data-for="reason"></div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="submitBtn" class="btn" type="submit" aria-label="הגש">
+              הגש
+              <span aria-hidden="true">➜</span>
+            </button>
+
+            <div class="meta">
+              בלחיצה על הגש הפרטים שלך ישלחו אלינו ונציג יחזור אליך בהקדם.
+            </div>
+          </div>
+
+          <div
+            id="statusBox"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      const WEBHOOK_URL =
+        "https://hook.eu2.make.com/9f9a17xjuorbefvubn277lzgsypw36sc";
+
+      const form = document.getElementById("leadForm");
+      const statusBox = document.getElementById("statusBox");
+      const submitBtn = document.getElementById("submitBtn");
+
+      let submitAttempted = false;
+
+      const fields = {
+        firstName: document.getElementById("firstName"),
+        lastName: document.getElementById("lastName"),
+        email: document.getElementById("email"),
+        phone: document.getElementById("phone"),
+        idNumber: document.getElementById("idNumber"),
+        gender: document.getElementById("gender"),
+        birthday: document.getElementById("birthday"),
+        idIssueDate: document.getElementById("idIssueDate"),
+        reason: document.getElementById("reason"),
+      };
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      const phoneRegex = /^0\d{9}$/;
+      const idRegex = /^\d{9}$/;
+
+      function setStatus(type, msg) {
+        statusBox.className = "status " + (type === "ok" ? "ok" : "bad");
+        statusBox.textContent = msg;
+      }
+
+      function clearStatus() {
+        statusBox.className = "status";
+        statusBox.textContent = "";
+      }
+
+      function setError(inputEl, message) {
+        const fieldWrap = inputEl.closest(".field");
+        const errEl = fieldWrap.querySelector(".error");
+        fieldWrap.classList.add("invalid");
+        errEl.textContent = message;
+      }
+
+      function clearError(inputEl) {
+        const fieldWrap = inputEl.closest(".field");
+        const errEl = fieldWrap.querySelector(".error");
+        fieldWrap.classList.remove("invalid");
+        errEl.textContent = "";
+      }
+
+      function validateAll() {
+        let ok = true;
+
+        const firstName = fields.firstName.value.trim();
+        const lastName = fields.lastName.value.trim();
+        const email = fields.email.value.trim();
+        const phone = fields.phone.value.trim();
+        const idNumber = fields.idNumber.value.trim();
+        const gender = fields.gender.value.trim();
+
+        Object.values(fields).forEach(clearError);
+
+        if (!firstName) {
+          ok = false;
+          setError(fields.firstName, "שדה חובה — נא למלא שם פרטי.");
+        }
+        if (!lastName) {
+          ok = false;
+          setError(fields.lastName, "שדה חובה — נא למלא שם משפחה.");
+        }
+
+        if (!email) {
+          ok = false;
+          setError(fields.email, "שדה חובה — נא למלא אימייל.");
+        } else if (!emailRegex.test(email)) {
+          ok = false;
+          setError(fields.email, "אימייל לא תקין. לדוגמה: name@example.com");
+        }
+
+        if (phone && !phoneRegex.test(phone)) {
+          ok = false;
+          setError(
+            fields.phone,
+            "טלפון לא תקין — חייב להיות 10 ספרות ולהתחיל ב-0.",
+          );
+        }
+
+        if (idNumber && !idRegex.test(idNumber)) {
+          ok = false;
+          setError(
+            fields.idNumber,
+            "תעודת זהות לא תקינה — חייבת להיות 9 ספרות בדיוק.",
+          );
+        }
+
+        if (gender && !["זכר", "נקבה", "אחר"].includes(gender)) {
+          ok = false;
+          setError(fields.gender, "בחירה לא תקינה. נא לבחור זכר/נקבה/אחר.");
+        }
+
+        return ok;
+      }
+
+      function toISODateStringOrEmpty(value) {
+        if (!value) return "";
+        return value;
+      }
+
+      async function submitToWebhook() {
+        const fd = new FormData();
+
+        fd.append("agent", "ירין בנזימרה");
+        fd.append("firstName", fields.firstName.value.trim());
+        fd.append("lastName", fields.lastName.value.trim());
+        fd.append("email", fields.email.value.trim());
+        fd.append("phone", fields.phone.value.trim());
+        fd.append("idNumber", fields.idNumber.value.trim());
+        fd.append("gender", fields.gender.value.trim());
+        fd.append("birthday", toISODateStringOrEmpty(fields.birthday.value));
+        fd.append(
+          "idIssueDate",
+          toISODateStringOrEmpty(fields.idIssueDate.value),
+        );
+        fd.append("reason", fields.reason.value.trim());
+
+        const res = await fetch(WEBHOOK_URL, { method: "POST", body: fd });
+        if (!res.ok) {
+          const txt = await res.text().catch(() => "");
+          throw new Error("HTTP " + res.status + (txt ? " — " + txt : ""));
+        }
+        return true;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        submitAttempted = true;
+        clearStatus();
+
+        const ok = validateAll();
+        if (!ok) {
+          setStatus(
+            "bad",
+            "יש שדות שלא מולאו/לא תקינים. בדוק/י את ההודעות האדומות מתחת לשדות.",
+          );
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "שולח...";
+        try {
+          await submitToWebhook();
+          setStatus("ok", "נשלח בהצלחה! תודה 🙌");
+          form.reset();
+          logoPreview.style.display = "none";
+          logoFallback.style.display = "block";
+        } catch (err) {
+          console.error(err);
+          setStatus(
+            "bad",
+            "שליחה נכשלה. נסה/י שוב מאוחר יותר. (" +
+              (err?.message || "שגיאה") +
+              ")",
+          );
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'הגש <span aria-hidden="true">➜</span>';
+        }
+      });
+
+      ["firstName", "lastName", "email", "phone", "idNumber", "gender"].forEach(
+        (k) => {
+          fields[k].addEventListener("input", () => {
+            if (!submitAttempted) return;
+            validateAll();
+          });
+          fields[k].addEventListener("change", () => {
+            if (!submitAttempted) return;
+            validateAll();
+          });
+        },
+      );
+    </script>
+  </body>
+</html>
