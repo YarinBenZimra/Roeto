@@ -7,6 +7,26 @@ Roeto setup, mock data generation, three working Make scenarios, AI integration,
 
 ---
 
+## 📑 Table of Contents
+
+- [Part 1 – Roeto Account Setup](#part-1--roeto-account-setup)
+- [Part 2 – Build & Import 120 Mock Clients](#part-2--build--import-120-mock-clients)
+  - [Method Used](#method-used)
+  - [Why This Approach?](#why-this-approach)
+- [Part 3 – Three Working Make Scenarios](#part-3--three-working-make-scenarios)
+  - [Scenario 1 – Automated Lead Qualification & Task Routing Engine](#-scenario-1--automated-lead-qualification--task-routing-engine)
+  - [Scenario 2 – Kobi AI Assistant](#-scenario-2--kobi-ai-assistant)
+  - [Scenario 3 – AI Revenue Intelligence Engine](#-scenario-3--ai-revenue-intelligence-engine)
+- [Part 4 – AI Integration (Prompt Design & Use Case)](#part-4--ai-integration-prompt-design--use-case)
+  - [Use Case](#use-case)
+  - [Prompt Design](#prompt-design)
+  - [Estimated Cost](#estimated-cost)
+  - [Risks & Fallback](#risks--fallback)
+- [Part 5 – New Automation Proposal](#part-5--new-automation-proposal)
+  - [RoetoBot AI – SMS AI Onboarding Assistant for Mislaka](#roetobot-ai--sms-ai-onboarding-assistant-for-mislaka)
+
+---
+
 # Part 1 – Roeto Account Setup
 
 **Actions performed:**
