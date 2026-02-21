@@ -91,8 +91,7 @@ All scenarios:
 - Have public View-mode share links
 
 ---
-## 🎥 Loom Walkthrough
-
+### 🎥 Loom Walkthrough
 👉 [Watch the full demo here](https://www.loom.com/share/e8648cadf2714f15987680cf37b41467)
 ---
 
